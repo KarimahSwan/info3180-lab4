@@ -24,7 +24,7 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Karimah Swan")
 
 
 @app.route('/upload', methods=['POST', 'GET'])
@@ -50,7 +50,6 @@ def upload():
 
 def get_uploaded_file():
     rootdir = os.getcwd()
-    print (rootdir)
     upload_files=[]
     for subdir, dirs, files in os.walk(rootdir + '/uploads'):    
         for file in files:
@@ -61,8 +60,6 @@ def get_uploaded_file():
 
 @app.route('/uploads/<filename>')
 def get_image(filename):
-    print(filename)
-    print(app.config['UPLOAD_FOLDER'])
     root_dir = os.getcwd()
     return send_from_directory(os.path.join(root_dir, app.config['UPLOAD_FOLDER']), filename)
 
